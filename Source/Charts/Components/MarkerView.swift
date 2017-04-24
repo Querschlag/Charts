@@ -57,6 +57,14 @@ open class MarkerView: NSUIView, IMarker
     {
         // Do nothing here...
     }
+
+    /// This method enables a custom IMarker to update it's content every time the IMarker is redrawn according to the data entry it points to.
+    ///
+    /// - parameter entries: Contains the highlighted entry and entries from all other datasets at the same point.
+    /// - parameter highlight: The highlight object contains information about the highlighted value such as it's dataset-index, the selected range or stack-index (only stacked bar entries).
+    open func refreshContent(entries: [ChartDataEntry], highlight: Highlight) {
+        // Do nothing here...
+    }
     
     open func draw(context: CGContext, point: CGPoint)
     {

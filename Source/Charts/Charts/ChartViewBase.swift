@@ -634,9 +634,22 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
 
             // callbacks to update the content
             marker.refreshContent(entry: e, highlight: highlight)
+
+            var entries = [ChartDataEntry]()
+            if let data = data {
+                for dataSetIndex in 0..<data.dataSetCount {
+                    if let entry = data.dataSets[dataSetIndex].entryForXValue(highlight.x, closestToY: highlight.y) {
+                        entries.append(entry)
+                    }
+                }
+            }
+
+            marker.refreshContent(entries: entries, highlight: highlight)
             
             // draw the marker
             marker.draw(context: context, point: pos)
+
+            break
         }
     }
     

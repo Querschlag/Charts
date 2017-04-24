@@ -34,7 +34,13 @@ public protocol IMarker: NSObjectProtocol
     /// - parameter entry: The Entry the IMarker belongs to. This can also be any subclass of Entry, like BarEntry or CandleEntry, simply cast it at runtime.
     /// - parameter highlight: The highlight object contains information about the highlighted value such as it's dataset-index, the selected range or stack-index (only stacked bar entries).
     func refreshContent(entry: ChartDataEntry, highlight: Highlight)
-    
+
+    /// This method enables a custom IMarker to update it's content every time the IMarker is redrawn according to the data entry it points to.
+    ///
+    /// - parameter entries: Contains the highlighted entry and entries from all other datasets at the same point.
+    /// - parameter highlight: The highlight object contains information about the highlighted value such as it's dataset-index, the selected range or stack-index (only stacked bar entries).
+    func refreshContent(entries: [ChartDataEntry], highlight: Highlight)
+
     /// Draws the IMarker on the given position on the given context
     func draw(context: CGContext, point: CGPoint)
 }
